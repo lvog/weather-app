@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <main class="main">
+        <section class="weather">
+          <div class="container">
+            <div class="form-block">
+              <form action="#">
+                <input type="search" placeholder="Search for your city ..." />
+                <input class="btn" type="submit" value="Search" />
+              </form>
+            </div>
+            <div class="weather-block"></div>
+          </div>
+        </section>
+      </main>
+      <template id="weather-template">
+        <div class="info-block">
+          <h1 class="city"></h1>
+          <span class="temp"></span>
+          <span class="temp-feel-like"></span>
+          <span class="pressure"></span>
+          <span class="humidity"></span>
+          <span class="wind"></span>
+        </div>
+      </template>
+    </div>
+  </body>
+</html>
