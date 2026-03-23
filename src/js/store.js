@@ -11,7 +11,9 @@ import thunderstorm from "../images/thunderstorm.svg";
 import snow from "../images/snow.svg";
 import mist from "../images/mist.svg";
 
-export const weatherIcons = {
+import { getTimeByTimezone } from "./utils/getTimeByTimezone";
+
+const weatherIcons = {
   "01d": sun,
   "01n": moon,
   "02d": fewCloudsDay,
@@ -35,13 +37,7 @@ export const weatherIcons = {
 export const mapWeatherData = (query) => {
   return {
     city: query.name,
-    coord: {
-      lon: query.coord.lon,
-      lat: query.coord.lat,
-    },
-    timezone: query.timezone,
-    sunrise: query.sys.sunrise,
-    sunset: query.sys.sunset,
+    time: getTimeByTimezone(query.timezone),
     iconUrl: weatherIcons[query.weather[0].icon],
     description: query.weather[0].description,
     temp: query.main.temp,
