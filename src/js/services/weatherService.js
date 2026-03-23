@@ -1,12 +1,9 @@
-import { WEATHER_URL } from "@js/config";
-import { store, getWeather } from "@js/store";
+import { API_WEATHER_URL, API_KEY } from "@js/config";
+import { mapWeatherData } from "@js/store";
 import { getData } from "@js/utils/getData";
 
-export const weatherService = async () => {
-  try {
-    const res = await getData(WEATHER_URL);
-    store.weather = getWeather(res);
-  } catch (err) {
-    console.error(err);
-  }
+export const weatherService = async (city) => {
+  const url = `${API_WEATHER_URL}?q=${city}&appid=${API_KEY}&units=metric`;
+  const res = await getData(url);
+  return mapWeatherData(res);
 };

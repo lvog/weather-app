@@ -1,9 +1,7 @@
 import "../styles/style.scss";
 
-import { weatherService } from "@js/services/weatherService";
-import { weatherUI } from "@js/ui/WeatherUI";
+import { searchModule } from "@js/modules/SearchModule";
 
-document.addEventListener("DOMContentLoaded", async () => {
-  await weatherService();
-  weatherUI.init();
+document.addEventListener("DOMContentLoaded", () => {
+  searchModule.init();
 });

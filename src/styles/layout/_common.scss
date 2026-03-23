@@ -5,13 +5,21 @@
 }
 
 .weather-form {
-  display: flex;
-  border-radius: var(--base-border-radius);
-  overflow: hidden;
   margin-bottom: 30px;
+
+  .form-group {
+    display: flex;
+    border-radius: var(--base-border-radius);
+    overflow: hidden;
+  }
 
   .search {
     border-radius: var(--base-border-radius) 0 0 var(--base-border-radius);
+  }
+
+  .error-message {
+    color: var(--color-red);
+    font-weight: 700;
   }
 }
 

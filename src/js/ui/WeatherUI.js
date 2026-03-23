@@ -1,44 +1,37 @@
-import { store, weatherIcons } from "@js/store";
-
 class WeatherUI {
   constructor(selector) {
     this.holder = document.querySelector(selector);
-    this.template = null;
-  }
-
-  init() {
-    if (!this.holder) return;
-    this.findElements();
-    this.createBlock();
-  }
-
-  findElements() {
     this.template = document.querySelector("#weather-template");
   }
 
-  createBlock() {
+  clear() {
+    if (this.holder) {
+      this.holder.innerHTML = "";
+    }
+  }
+
+  render(weather) {
+    if (!this.holder || !this.template) return;
+
+    this.clear();
+
     const template = this.template.content.cloneNode(true);
-    const city = template.querySelector(".city");
-    const temp = template.querySelector(".temp");
-    const tempFeelLike = template.querySelector(".temp-feel-like");
-    const description = template.querySelector(".description");
-    const pressure = template.querySelector(".pressure");
-    const humidity = template.querySelector(".humidity");
-    const wind = template.querySelector(".wind");
+
+    template.querySelector(".city").textContent = weather.city;
+    template.querySelector(".temp").textContent = Math.trunc(weather.temp);
+    template.querySelector(".temp-feel-like").textContent = Math.trunc(
+      weather.tempFeelsLike,
+    );
+    template.querySelector(".description").textContent = weather.description;
+    template.querySelector(".pressure").textContent = weather.pressure;
+    template.querySelector(".humidity").textContent = weather.humidity;
+    template.querySelector(".wind").textContent = weather.wind;
 
     const weatherIcon = document.createElement("img");
-    weatherIcon.src = weatherIcons[`${store.weather.icon}`];
-    weatherIcon.alt = store.weather.description;
+    weatherIcon.src = weather.iconUrl;
+    weatherIcon.alt = weather.description;
     const iconHolder = template.querySelector(".weather-icon");
     iconHolder.appendChild(weatherIcon);
-
-    city.textContent = store.weather.city;
-    temp.textContent = Math.trunc(store.weather.temp);
-    tempFeelLike.textContent = Math.trunc(store.weather.temp_feels_like);
-    description.textContent = store.weather.description;
-    pressure.textContent = store.weather.pressure;
-    humidity.textContent = store.weather.humidity;
-    wind.textContent = store.weather.wind;
 
     this.holder.appendChild(template);
   }
