@@ -1,1 +1,122 @@
+@use "abstracts/mixins" as m;
 
+.weather-section {
+  padding: 50px 0;
+}
+
+.weather-form {
+  display: flex;
+  border-radius: var(--base-border-radius);
+  overflow: hidden;
+  margin-bottom: 30px;
+
+  .search {
+    border-radius: var(--base-border-radius) 0 0 var(--base-border-radius);
+  }
+}
+
+.grid-row {
+  display: grid;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  margin: 0 -15px;
+
+  &.align-center {
+    align-items: center;
+  }
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  &.justify-center {
+    justify-content: center;
+  }
+}
+
+[class^="col"] {
+  display: flex;
+  padding: 0 15px;
+}
+
+.col-40 {
+  width: 40%;
+}
+
+.col-33 {
+  width: 33.33%;
+}
+
+.col-60 {
+  width: 60%;
+}
+
+.info-block {
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid var(--color-gray);
+  border-radius: var(--base-border-radius);
+
+  i {
+    display: block;
+    font-size: 40px;
+  }
+}
+
+.info-list {
+  @include m.listReset;
+
+  width: 100%;
+
+  li {
+    margin-bottom: var(--base-margin-bottom);
+  }
+}
+
+.temp-list {
+  li {
+    &:first-child {
+      font-size: 80px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.date {
+  font-size: 20px;
+}
+
+.time {
+  font-size: 100px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.main-info {
+  width: 100%;
+
+  i {
+    display: block;
+    font-size: 140px;
+    margin-bottom: var(--base-margin-bottom);
+  }
+}
+
+.subtitle {
+  display: block;
+  font-weight: 700;
+}
+
+.description {
+  text-transform: capitalize;
+}

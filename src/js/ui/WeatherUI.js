@@ -1,4 +1,4 @@
-import { store } from "@js/store";
+import { store, weatherIcons } from "@js/store";
 
 class WeatherUI {
   constructor(selector) {
@@ -21,13 +21,21 @@ class WeatherUI {
     const city = template.querySelector(".city");
     const temp = template.querySelector(".temp");
     const tempFeelLike = template.querySelector(".temp-feel-like");
+    const description = template.querySelector(".description");
     const pressure = template.querySelector(".pressure");
     const humidity = template.querySelector(".humidity");
     const wind = template.querySelector(".wind");
 
+    const weatherIcon = document.createElement("img");
+    weatherIcon.src = weatherIcons[`${store.weather.icon}`];
+    weatherIcon.alt = store.weather.description;
+    const iconHolder = template.querySelector(".weather-icon");
+    iconHolder.appendChild(weatherIcon);
+
     city.textContent = store.weather.city;
-    temp.textContent = store.weather.temp;
-    tempFeelLike.textContent = store.weather.temp_feels_like;
+    temp.textContent = Math.trunc(store.weather.temp);
+    tempFeelLike.textContent = Math.trunc(store.weather.temp_feels_like);
+    description.textContent = store.weather.description;
     pressure.textContent = store.weather.pressure;
     humidity.textContent = store.weather.humidity;
     wind.textContent = store.weather.wind;

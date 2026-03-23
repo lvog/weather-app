@@ -11,7 +11,7 @@
   color: var(--btn-color);
   background: var(--btn-background);
   border: var(--btn-border);
-  border-radius: var(--btn-border-radius);
+  // border-radius: var(--btn-border-radius);
   cursor: pointer;
 
   @include m.hover {

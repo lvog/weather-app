@@ -16,7 +16,7 @@ textarea {
   height: var(--input-height);
   color: var(--input-color);
   padding: var(--input-padding);
-  margin-bottom: var(--base-margin-bottom);
+  border-radius: var(--input-border-radius);
   border: 1px solid var(--input-border-color);
 
   &::placeholder {
