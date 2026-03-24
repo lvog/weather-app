@@ -5,6 +5,10 @@
   padding: 50px 0;
 }
 
+.weather-block {
+  margin-bottom: 30px;
+}
+
 .weather-form {
   margin-bottom: 30px;
 
@@ -169,4 +173,14 @@ h1 {
       background: var(--color-orange);
     }
   }
+}
+
+.map-block {
+  border: 1px solid var(--color-gray);
+  border-radius: var(--base-border-radius);
+  overflow: hidden;
+}
+
+#map {
+  height: 400px;
 }
