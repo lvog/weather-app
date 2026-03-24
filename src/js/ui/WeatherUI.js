@@ -1,5 +1,3 @@
-import { getTimeByTimezone } from "@js/utils/getTimeByTimezone";
-
 class WeatherUI {
   constructor(selector) {
     this.holder = document.querySelector(selector);
@@ -18,7 +16,6 @@ class WeatherUI {
     this.clear();
 
     const template = this.template.content.cloneNode(true);
-    console.log(weather);
 
     template.querySelector(".city").textContent = weather.city;
     template.querySelector(".day").textContent = weather.time.day;

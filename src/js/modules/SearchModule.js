@@ -1,4 +1,5 @@
 import { DEFAULT_CITY } from "@js/config";
+import { cities } from "@js/store";
 import { weatherService } from "@js/services/weatherService";
 import { weatherUI } from "@js/ui/WeatherUI";
 

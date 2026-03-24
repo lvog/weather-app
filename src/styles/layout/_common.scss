@@ -112,11 +112,13 @@ h1 {
 
 .main-info {
   width: 100%;
+}
 
-  i {
-    display: block;
-    font-size: 140px;
-    margin-bottom: var(--base-margin-bottom);
+.weather-icon {
+  margin-bottom: var(--base-margin-bottom);
+
+  img {
+    width: 100%;
   }
 }
 
@@ -127,4 +129,31 @@ h1 {
 
 .description {
   text-transform: capitalize;
+}
+
+.autocomplete-holder {
+  position: relative;
+}
+
+.autocomplete-results {
+  @include m.listReset;
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray);
+  border-radius: var(--base-border-radius);
+  opacity: 0;
+  visibility: hidden;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  li {
+    margin-bottom: 5px;
+  }
 }

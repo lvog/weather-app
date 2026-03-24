@@ -11,18 +11,29 @@
         <section class="weather-section">
           <div class="container">
             <div class="grid-row"></div>
-            <form class="weather-form" action="#">
-              <div class="form-group">
-                <input
-                  class="search"
-                  type="search"
-                  name="search"
-                  placeholder="Search for your city ..."
-                />
-                <input class="btn" type="submit" value="Search" />
-              </div>
-              <span class="error-message"></span>
-            </form>
+            <div class="autocomplete-holder">
+              <form class="weather-form" action="#">
+                <div class="form-group">
+                  <input
+                    class="search"
+                    type="search"
+                    name="search"
+                    autocomplete="off"
+                    placeholder="Search for your city ..."
+                  />
+                  <input class="btn" type="submit" value="Search" />
+                </div>
+                <span class="error-message"></span>
+              </form>
+              <ul class="autocomplete-results">
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                  in delectus quaerat, nemo sunt, odio debitis, aliquid natus
+                  maiores maxime tempore. Eligendi cumque iusto et! Magnam
+                  perspiciatis voluptate rerum recusandae!
+                </li>
+              </ul>
+            </div>
             <div class="weather-block"></div>
           </div>
         </section>
