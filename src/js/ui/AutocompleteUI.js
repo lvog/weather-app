@@ -1,7 +1,8 @@
 class AutocompleteUI {
   constructor(selector) {
     this.holder = document.querySelector(selector);
-    this.activeClass = "active";
+    this.activeHolderClass = "active-autocomplete";
+    this.activeItemClass = "active";
   }
 
   clear() {
@@ -11,11 +12,23 @@ class AutocompleteUI {
   }
 
   open() {
-    this.holder.classList.add(this.activeClass);
+    this.holder.classList.add(this.activeHolderClass);
   }
 
   close() {
-    this.holder.classList.remove(this.activeClass);
+    this.holder.classList.remove(this.activeHolderClass);
+  }
+
+  activeItem(index) {
+    const items = this.holder.querySelectorAll(".result-item");
+
+    if (!items.length) return;
+
+    items.forEach((item) => {
+      item.classList.remove(this.activeItemClass);
+    });
+
+    items[index].classList.add(this.activeItemClass);
   }
 
   render(cities) {

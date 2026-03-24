@@ -1,6 +1,7 @@
 @use "abstracts/mixins" as m;
 
 .weather-section {
+  min-height: 100dvh;
   padding: 50px 0;
 }
 
@@ -141,19 +142,31 @@ h1 {
   top: calc(100% + 1px);
   left: 0;
   right: 0;
-  padding: 15px;
   background: var(--color-white);
   border: 1px solid var(--color-gray);
   border-radius: var(--base-border-radius);
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
 
-  &.active {
+  &.active-autocomplete {
     opacity: 1;
     visibility: visible;
   }
 
   li {
-    margin-bottom: 5px;
+    @include m.transition(color background);
+    padding: 5px 15px;
+    cursor: pointer;
+
+    &.active {
+      color: var(--color-white);
+      background: var(--color-orange);
+    }
+
+    @include m.hover {
+      color: var(--color-white);
+      background: var(--color-orange);
+    }
   }
 }

@@ -4,6 +4,8 @@ import { autocompleteUI } from "@js/ui/AutocompleteUI";
 class AutocompeteModule {
   constructor(selector) {
     this.holder = document.querySelector(selector);
+    this.activeIndex = 0;
+    // this.citiesNum = 0;
   }
 
   init() {
@@ -11,6 +13,7 @@ class AutocompeteModule {
     this.findElements();
     this.handleInput();
     this.handleClick();
+    this.handlePressedKey();
   }
 
   findElements() {
@@ -22,11 +25,16 @@ class AutocompeteModule {
     this.searchField.addEventListener("input", (e) => {
       const value = e.target.value;
 
-      if (!value) return;
+      if (!value) {
+        autocompleteUI.close();
+        return;
+      }
 
       const cityNames = this.search(value.toLowerCase());
 
       autocompleteUI.render(cityNames);
+      this.activeIndex = 0;
+      autocompleteUI.activeItem(this.activeIndex);
     });
   }
 
@@ -42,6 +50,50 @@ class AutocompeteModule {
 
       this.searchField.value = item.textContent;
       autocompleteUI.close();
+      this.activeIndex = 0;
+    });
+  }
+
+  handlePressedKey() {
+    this.searchField.addEventListener("keydown", (e) => {
+      const activeHolder = this.resultsHolder.classList.contains(
+        "active-autocomplete",
+      );
+      const key = e.key;
+      const num =
+        this.resultsHolder.querySelectorAll(".result-item").length - 1;
+
+      if (!activeHolder) return;
+
+      if (key === "ArrowDown") {
+        num > this.activeIndex ? this.activeIndex++ : (this.activeIndex = num);
+        autocompleteUI.activeItem(this.activeIndex);
+      }
+
+      if (key === "ArrowUp") {
+        this.activeIndex === 0 ? (this.activeIndex = 0) : this.activeIndex--;
+        autocompleteUI.activeItem(this.activeIndex);
+      }
+
+      if (key === "Enter") {
+        e.preventDefault();
+
+        const activeItem = this.resultsHolder.querySelector(
+          ".result-item.active",
+        );
+
+        if (!activeItem) return;
+
+        this.searchField.value = activeItem.textContent;
+        this.activeIndex = 0;
+        autocompleteUI.close();
+      }
+
+      if (key === "Escape") {
+        e.preventDefault();
+        autocompleteUI.close();
+        this.activeIndex = 0;
+      }
     });
   }
 
