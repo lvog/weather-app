@@ -1,13 +1,17 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+import pinIcon from "../../images/pin.png";
+
 class MapUI {
   constructor(selector) {
     this.holder = document.querySelector(selector);
     this.map = null;
     this.marker = null;
+    this.pinIcon = null;
     this.mapID = "map";
-    this.tile = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+    this.tile =
+      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
     this.maxZoom = 19;
     this.copy =
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
@@ -35,8 +39,14 @@ class MapUI {
   setMarker(coords) {
     if (!this.map) return;
 
+    const pin = L.icon({
+      iconUrl: pinIcon,
+      iconSize: [23, 32],
+      iconAnchor: [23, 32],
+    });
+
     !this.marker
-      ? (this.marker = L.marker(coords).addTo(this.map))
+      ? (this.marker = L.marker(coords, { icon: pin }).addTo(this.map))
       : this.marker.setLatLng(coords);
   }
 
