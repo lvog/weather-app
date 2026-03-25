@@ -8,7 +8,11 @@ class MapUI {
     this.holder = document.querySelector(selector);
     this.map = null;
     this.marker = null;
-    this.pinIcon = null;
+    this.pin = L.icon({
+      iconUrl: pinIcon,
+      iconSize: [23, 32],
+      iconAnchor: [11.5, 32],
+    });
     this.mapID = "map";
     this.tile =
       "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
@@ -39,14 +43,8 @@ class MapUI {
   setMarker(coords) {
     if (!this.map) return;
 
-    const pin = L.icon({
-      iconUrl: pinIcon,
-      iconSize: [23, 32],
-      iconAnchor: [23, 32],
-    });
-
     !this.marker
-      ? (this.marker = L.marker(coords, { icon: pin }).addTo(this.map))
+      ? (this.marker = L.marker(coords, { icon: this.pin }).addTo(this.map))
       : this.marker.setLatLng(coords);
   }
 
