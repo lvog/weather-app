@@ -1,14 +1,54 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const map = L.map("map").setView([49.2622, 23.8561], 10); // Stryj
+class MapUI {
+  constructor(selector) {
+    this.holder = document.querySelector(selector);
+    this.map = null;
+    this.marker = null;
+    this.mapID = "map";
+    this.tile = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+    this.maxZoom = 19;
+    this.copy =
+      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+  }
 
-export const mapUI = () => {
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  }).addTo(map);
+  init(coords) {
+    if (!this.holder || this.map) return;
 
-  L.marker([49.2622, 23.8561]).addTo(map);
-};
+    this.map = L.map(this.mapID).setView(coords, 10);
+
+    L.tileLayer(this.tile, {
+      maxZoom: this.maxZoom,
+      attribution: this.copy,
+    }).addTo(this.map);
+
+    this.setMarker(coords);
+  }
+
+  updateView(coords) {
+    if (!this.map) return;
+
+    this.map.setView(coords, 10);
+  }
+
+  setMarker(coords) {
+    if (!this.map) return;
+
+    !this.marker
+      ? (this.marker = L.marker(coords).addTo(this.map))
+      : this.marker.setLatLng(coords);
+  }
+
+  render(coords) {
+    if (!this.map) {
+      this.init(coords);
+      return;
+    }
+
+    this.updateView(coords);
+    this.setMarker(coords);
+  }
+}
+
+export const mapUI = new MapUI("#map");

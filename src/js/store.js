@@ -37,6 +37,8 @@ const weatherIcons = {
 export const mapWeatherData = (query) => {
   return {
     city: query.name,
+    lat: query.coord.lat,
+    lon: query.coord.lon,
     time: getTimeByTimezone(query.timezone),
     iconUrl: weatherIcons[query.weather[0].icon],
     description: query.weather[0].description,

@@ -1,4 +1,8 @@
-export const DEFAULT_CITY = "Stryj";
+export const DEFAULT_CITY = {
+  name: "Stryj",
+  lon: 23.8561,
+  lat: 49.2622,
+};
 
 export const API_WEATHER_URL =
   "https://api.openweathermap.org/data/2.5/weather";

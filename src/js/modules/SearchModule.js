@@ -1,6 +1,7 @@
 import { DEFAULT_CITY } from "@js/config";
 import { weatherService } from "@js/services/weatherService";
 import { weatherUI } from "@js/ui/WeatherUI";
+import { mapModule } from "./MapModule";
 
 class SearchModule {
   constructor(selector) {
@@ -9,7 +10,7 @@ class SearchModule {
     this.searchField = null;
     this.errorField = null;
     this.weatherBlock = null;
-    this.defaultCity = DEFAULT_CITY;
+    this.defaultCity = DEFAULT_CITY.name;
   }
 
   init() {
@@ -58,6 +59,7 @@ class SearchModule {
     try {
       const weather = await weatherService(city);
       weatherUI.render(weather);
+      mapModule.update(weather);
       this.form.reset();
     } catch (error) {
       this.validation(error.message);

@@ -5,7 +5,6 @@ class AutocompeteModule {
   constructor(selector) {
     this.holder = document.querySelector(selector);
     this.activeIndex = 0;
-    // this.citiesNum = 0;
   }
 
   init() {
