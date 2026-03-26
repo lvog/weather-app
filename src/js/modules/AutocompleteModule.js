@@ -1,7 +1,7 @@
-import { cities } from "@js/store";
+import { cities } from "@js/data/cities";
 import { autocompleteUI } from "@js/ui/AutocompleteUI";
 
-class AutocompeteModule {
+class AutocompleteModule {
   constructor(selector) {
     this.holder = document.querySelector(selector);
     this.activeIndex = 0;
@@ -29,7 +29,7 @@ class AutocompeteModule {
         return;
       }
 
-      const cityNames = this.search(value.toLowerCase());
+      const cityNames = this.search(value);
 
       autocompleteUI.render(cityNames);
       this.activeIndex = 0;
@@ -97,8 +97,9 @@ class AutocompeteModule {
   }
 
   search(value) {
-    return cities.filter((city) => city.toLowerCase().includes(value));
+    const lower = value.toLowerCase();
+    return cities.filter((city) => city.toLowerCase().includes(lower));
   }
 }
 
-export const autocompeteModule = new AutocompeteModule(".weather-section");
+export const autocompleteModule = new AutocompleteModule(".weather-section");

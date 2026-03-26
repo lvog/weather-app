@@ -1,29 +1,8 @@
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+import { days, months } from "@js/data/dateConstants";
 
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+export const getCityTime = (timezone) => {
+  if (!timezone) return;
 
-export const getTimeByTimezone = (timezone) => {
   const now = new Date();
   const utc = now.getTime() + now.getTimezoneOffset() * 60000;
   const ms = utc + timezone * 1000;

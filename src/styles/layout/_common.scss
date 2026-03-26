@@ -25,7 +25,13 @@
   }
 
   .search {
+    border-color: var(--color-orange);
+    border-right: 0;
     border-radius: var(--base-border-radius) 0 0 var(--base-border-radius);
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
   }
 }
 

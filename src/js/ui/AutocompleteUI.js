@@ -41,12 +41,16 @@ class AutocompleteUI {
       return;
     }
 
+    const fragment = document.createDocumentFragment();
+
     cities.forEach((cityName) => {
       const city = document.createElement("li");
       city.classList.add("result-item");
       city.textContent = cityName;
-      this.holder.appendChild(city);
+      fragment.appendChild(city);
     });
+
+    this.holder.appendChild(fragment);
 
     this.open();
   }

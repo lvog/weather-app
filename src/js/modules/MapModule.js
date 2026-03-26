@@ -7,10 +7,10 @@ class MapModule {
     this.coords = [DEFAULT_CITY.lat, DEFAULT_CITY.lon];
   }
 
-  update(coords = DEFAULT_CITY) {
+  update({ lat, lon } = DEFAULT_CITY) {
     if (!this.holder) return;
 
-    this.coords = [coords.lat, coords.lon];
+    this.coords = [lat, lon];
     mapUI.render(this.coords);
   }
 }

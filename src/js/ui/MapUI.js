@@ -2,6 +2,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import pinIcon from "../../images/pin.png";
+import { MAP_TILE_URL } from "@js/config";
 
 class MapUI {
   constructor(selector) {
@@ -14,8 +15,8 @@ class MapUI {
       iconAnchor: [11.5, 32],
     });
     this.mapID = "map";
-    this.tile =
-      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+    this.tile = MAP_TILE_URL;
+    this.zoom = 10;
     this.maxZoom = 19;
     this.copy =
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
@@ -24,7 +25,7 @@ class MapUI {
   init(coords) {
     if (!this.holder || this.map) return;
 
-    this.map = L.map(this.mapID).setView(coords, 10);
+    this.map = L.map(this.mapID).setView(coords, this.zoom);
 
     L.tileLayer(this.tile, {
       maxZoom: this.maxZoom,
@@ -37,7 +38,7 @@ class MapUI {
   updateView(coords) {
     if (!this.map) return;
 
-    this.map.setView(coords, 10);
+    this.map.setView(coords, this.zoom);
   }
 
   setMarker(coords) {

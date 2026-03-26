@@ -46,9 +46,9 @@ class SearchModule {
       mapModule.update(weather);
 
       layoutUI.showContent();
+      layoutUI.clearError();
 
       this.form.reset();
-      layoutUI.clearError();
     } catch (error) {
       layoutUI.showError(error.message);
       weatherUI.clear();
