@@ -2,13 +2,13 @@ import { DEFAULT_CITY } from "@js/config";
 import { weatherService } from "@js/services/weatherService";
 import { weatherUI } from "@js/ui/WeatherUI";
 import { mapModule } from "./MapModule";
+import { layoutUI } from "@js/ui/LayoutUI";
 
 class SearchModule {
   constructor(selector) {
     this.holder = document.querySelector(selector);
     this.form = null;
     this.searchField = null;
-    this.errorField = null;
     this.weatherBlock = null;
     this.defaultCity = DEFAULT_CITY.name;
   }
@@ -16,15 +16,13 @@ class SearchModule {
   init() {
     if (!this.holder) return;
     this.findElements();
-    this.handleSubmit();
-    this.handleChange();
     this.search(this.defaultCity);
+    this.handleSubmit();
   }
 
   findElements() {
     this.form = this.holder.querySelector(".weather-form");
     this.searchField = this.form.querySelector(".search");
-    this.errorField = this.form.querySelector(".error-message");
   }
 
   handleSubmit() {
@@ -38,31 +36,21 @@ class SearchModule {
     });
   }
 
-  handleChange() {
-    this.searchField.addEventListener("input", (e) => {
-      const field = e.target;
-      const hasError = field.classList.contains("error");
-
-      if (!hasError) return;
-
-      field.classList.remove("error");
-      this.errorField.textContent = "";
-    });
-  }
-
-  validation(message) {
-    this.searchField.classList.add("error");
-    this.errorField.textContent = message;
-  }
-
   async search(city) {
     try {
+      layoutUI.showLoading();
+
       const weather = await weatherService(city);
+
       weatherUI.render(weather);
       mapModule.update(weather);
+
+      layoutUI.showContent();
+
       this.form.reset();
+      layoutUI.clearError();
     } catch (error) {
-      this.validation(error.message);
+      layoutUI.showError(error.message);
       weatherUI.clear();
     }
   }

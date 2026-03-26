@@ -120,6 +120,43 @@ a {
 
 .container {
   max-width: var(--container-max-width);
+  width: 100%;
   padding: var(--container-padding);
   margin: 0 auto;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  margin: 0 -15px;
+
+  &.align-center {
+    align-items: center;
+  }
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  &.justify-center {
+    justify-content: center;
+  }
+}
+
+[class^="col"] {
+  display: flex;
+  padding: 0 15px;
+}
+
+.col-40 {
+  width: 40%;
+}
+
+.col-33 {
+  width: 33.33%;
+}
+
+.col-60 {
+  width: 60%;
 }

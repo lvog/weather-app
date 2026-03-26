@@ -9,9 +9,8 @@
     <div class="wrapper">
       <main class="main">
         <section class="weather-section">
-          <div class="container">
-            <div class="grid-row"></div>
-            <div class="autocomplete-holder">
+          <div class="container flex-column">
+            <div class="autocomplete-block">
               <form class="weather-form" action="#">
                 <div class="form-group">
                   <input
@@ -23,20 +22,18 @@
                   />
                   <input class="btn" type="submit" value="Search" />
                 </div>
-                <span class="error-message"></span>
               </form>
-              <ul class="autocomplete-results">
-                <li>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  in delectus quaerat, nemo sunt, odio debitis, aliquid natus
-                  maiores maxime tempore. Eligendi cumque iusto et! Magnam
-                  perspiciatis voluptate rerum recusandae!
-                </li>
-              </ul>
+              <ul class="autocomplete-results"></ul>
             </div>
-            <div class="weather-block"></div>
-            <div class="map-block">
-              <div id="map"></div>
+            <div class="load-info-block flex-column">
+              <div class="weather-block"></div>
+              <div class="map-block">
+                <div id="map"></div>
+              </div>
+              <div class="preloader-block">
+                <span class="sun"></span>
+              </div>
+              <div class="error-block"></div>
             </div>
           </div>
         </section>
@@ -101,6 +98,10 @@
             </div>
           </div>
         </div>
+      </template>
+      <template id="error-template">
+        <img src="images/error.svg" alt="error icon" />
+        <span class="error-message h3"></span>
       </template>
     </div>
   </body>
