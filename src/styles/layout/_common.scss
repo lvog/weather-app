@@ -17,10 +17,6 @@
   z-index: 2;
 }
 
-.weather-block {
-  margin-bottom: 30px;
-}
-
 .weather-form {
   .form-group {
     display: flex;
@@ -69,9 +65,14 @@
 }
 
 .load-info-block {
-  flex: 1 0 auto;
   position: relative;
   z-index: 1;
+
+  @include m.minMediaQuery(768px) {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+  }
 
   &.loading {
     .preloader-block {
@@ -94,12 +95,28 @@
   }
 }
 
+.weather-block {
+  margin-bottom: 30px;
+
+  .main-block {
+    @include m.minMediaQuery(768px) {
+      display: flex;
+      margin: 0 -15px;
+    }
+  }
+}
+
 .info-block {
-  width: 100%;
   text-align: center;
   padding: 15px;
+  margin-bottom: 30px;
   border: 1px solid var(--color-gray);
   border-radius: var(--base-border-radius);
+
+  @include m.minMediaQuery(768px) {
+    width: 100%;
+    margin-bottom: 0;
+  }
 
   i {
     display: block;
@@ -110,7 +127,9 @@
 .info-list {
   @include m.listReset;
 
-  width: 100%;
+  @include m.minMediaQuery(768px) {
+    width: 100%;
+  }
 
   li {
     margin-bottom: var(--base-margin-bottom);
@@ -120,10 +139,24 @@
 .temp-list {
   li {
     &:first-child {
-      font-size: 80px;
+      font-size: 48px;
       font-weight: 700;
       text-transform: uppercase;
+
+      @include m.minMediaQuery(1024px) {
+        font-size: 80px;
+      }
     }
+  }
+}
+
+.add-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  li {
+    padding: 0 15px;
   }
 }
 
@@ -136,19 +169,27 @@ h1 {
 }
 
 .time-holder {
-  font-size: 100px;
+  font-size: 80px;
   line-height: 1;
   font-weight: 700;
+
+  @include m.minMediaQuery(1024px) {
+    font-size: 100px;
+  }
 }
 
 .main-info {
-  width: 100%;
+  @include m.minMediaQuery(768px) {
+    width: 100%;
+  }
 }
 
 .weather-icon {
   margin-bottom: var(--base-margin-bottom);
 
   img {
+    max-height: 150px;
+    max-width: 200px;
     width: 100%;
   }
 }
@@ -159,16 +200,21 @@ h1 {
 }
 
 .description {
+  display: block;
   text-transform: capitalize;
+  margin-bottom: 20px;
 }
 
 .map-block {
-  display: flex;
-  flex: 1 0 auto;
   border: 1px solid var(--color-gray);
   border-radius: var(--base-border-radius);
   overflow: hidden;
   z-index: 1;
+
+  @include m.minMediaQuery(768px) {
+    display: flex;
+    flex: 1 0 auto;
+  }
 
   .leaflet-touch {
     .leaflet-bar {
@@ -182,7 +228,12 @@ h1 {
 }
 
 #map {
+  height: 50dvh;
   width: 100%;
+
+  @include m.minMediaQuery(768px) {
+    height: auto;
+  }
 }
 
 .error-block,
