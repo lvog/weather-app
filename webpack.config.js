@@ -160,7 +160,12 @@ const getModuleRules = ({ isDev, isProd }) => [
 
   // Images
   {
-    test: /\.(png|jpe?g|gif|svg|webp)$/i,
+    test: /\.(png|jpe?g|gif|webp)$/i,
+    type: "asset/resource",
+    generator: { filename: "images/[name][ext]" },
+  },
+  {
+    test: /\.svg$/,
     type: "asset/resource",
     generator: { filename: "images/[name][ext]" },
   },

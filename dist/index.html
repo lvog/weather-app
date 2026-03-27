@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Weather App" />
+    <link rel="manifest" href="images/site.webmanifest" />
+    <title>Weather app</title>
+  <link href="css/main.min.css" rel="stylesheet"></head>
+  <body>
+    <div class="wrapper">
+      <main class="main">
+        <section class="weather-section">
+          <div class="container flex-column">
+            <div class="autocomplete-block">
+              <form class="weather-form" action="#">
+                <div class="form-group">
+                  <input
+                    class="search"
+                    type="search"
+                    name="search"
+                    autocomplete="off"
+                    placeholder="Search for your city ..."
+                  />
+                  <button class="btn" type="submit">Search</button>
+                </div>
+              </form>
+              <ul class="autocomplete-results"></ul>
+            </div>
+            <div class="load-info-block">
+              <div class="weather-block"></div>
+              <div class="map-block">
+                <div id="map"></div>
+              </div>
+              <div class="preloader-block">
+                <span class="sun"></span>
+              </div>
+              <div class="error-block"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <template id="weather-template">
+        <div class="main-block">
+          <div class="col-40">
+            <div class="info-block flex-column justify-center">
+              <h1 class="city"></h1>
+              <ul class="info-list">
+                <li>
+                  <div class="date-holder">
+                    <span class="day"></span>,
+                    <span class="date"></span>
+                    <span class="month"></span>
+                  </div>
+                </li>
+                <li>
+                  <div class="time-holder">
+                    <span class="hours"></span>:<span class="minutes"></span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-60">
+            <div class="info-block">
+              <div class="flex-row align-center">
+                <div class="col-33">
+                  <ul class="info-list temp-list">
+                    <li><span class="temp"></span>°C</li>
+                    <li>Feels like: <span class="temp-feel-like"></span>°C</li>
+                  </ul>
+                </div>
+                <div class="col-33">
+                  <div class="main-info">
+                    <div class="weather-icon"></div>
+                    <strong class="h2 description"></strong>
+                  </div>
+                </div>
+                <div class="col-33">
+                  <ul class="info-list add-list">
+                    <li>
+                      <i class="icon-wind"></i><span class="wind"></span> km/h
+                      <span class="subtitle">Wind Speed</span>
+                    </li>
+                    <li>
+                      <i class="icon-humidity"></i
+                      ><span class="humidity"></span>
+                      %
+                      <span class="subtitle">Humidity</span>
+                    </li>
+                    <li>
+                      <i class="icon-pressure"></i
+                      ><span class="pressure"></span>
+                      hPa
+                      <span class="subtitle">Pressure</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template id="error-template">
+        <img src="images/error.svg" alt="error icon" />
+        <span class="error-message h3"></span>
+      </template>
+    </div>
+  <script defer src="js/main.js"></script></body>
+</html>
