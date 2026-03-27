@@ -1,13 +1,10 @@
 # 🌦️ Weather App
-
 A modern weather application built with **vanilla JavaScript**, featuring a clean architecture and interactive UI.
 
 ## 🌐 Live Demo
-
 [Live Demo](https://lvog.github.io/weather-app)
 
 ## 📌 Features
-
 - 🔍 Search weather by city name
 - ⚡ Autocomplete suggestions for faster input
 - 🌡️  Current weather data (temperature, feels like, humidity, pressure, wind)
@@ -18,7 +15,6 @@ A modern weather application built with **vanilla JavaScript**, featuring a clea
 - 🎨 Responsive and clean UI
 
 ## 🧠 JavaScript Architecture
-
 The project follows a modular architecture with separation of concerns:
 
 ```text
@@ -54,7 +50,6 @@ src/js/
 ```
 
 ## 🛠️ Technologies
-
 - Webpack
 - JavaScript (ES6+)
 - HTML5
@@ -66,13 +61,11 @@ src/js/
 ## ⚙️ Setup & Installation
 
 ### 1. Clone the repository
-
 ```bash
 git clone https://github.com/lvog/weather-app.git
 ```
 
 ### 2. Navigate to the project folder
-
 ```bash
 cd weather-app
 ```
@@ -88,7 +81,6 @@ npm install
 ### 4. Create a `.env` file in the root directory
 
 Add your API key:
-
 ```bash
 API_KEY=your_api_key_here
 ```
@@ -96,13 +88,11 @@ API_KEY=your_api_key_here
 You can get an API key by registering at [OpenWeather](https://openweathermap.org)
 
 ### 5. Run the project
-
 ```bash
 npm run dev
 ```
 
 ### 6. Build the project for production
-
 ```bash
 npm run build
 ```
@@ -112,5 +102,10 @@ npm run build
 - Save recent searches (localStorage)  
 - Add unit switching (°C / °F)
 
-## License 📄
+## 📄 License
 Distributed under the MIT License. See  `LICENSE`  for more information.
+
+## 📬 Contact
+- Email: [levchuk.oleg21@gmail.com](mailto:levchuk.oleg21@gmail.com)  
+- Website: lvog.github.io  
+- LinkedIn: www.linkedin.com/in/oleg-levchuk-2098b2b7
