@@ -107,5 +107,5 @@ Distributed under the MIT License. See  `LICENSE`  for more information.
 
 ## 📬 Contact
 - Email: [levchuk.oleg21@gmail.com](mailto:levchuk.oleg21@gmail.com)  
-- Website: lvog.github.io  
-- LinkedIn: www.linkedin.com/in/oleg-levchuk-2098b2b7
+- Website: [lvog.github.io](https://lvog.github.io)  
+- LinkedIn: [in/oleg-levchuk-2098b2b7](https://www.linkedin.com/in/oleg-levchuk-2098b2b7)
